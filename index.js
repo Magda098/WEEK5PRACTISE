@@ -2,6 +2,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
 require('dotenv').config();
+//import routes
+const routes= require('./routes/routes');
 
 // Define the port number
 const port = process.env.PORT || 3000;
@@ -20,8 +22,10 @@ database.once('connected',()=>{
 
 // Create an express app,Initialize express
 const app = express();
-
+//ensure application only accepts data in json format
 app.use(express.json());
+//tells the app to use the defines routes
+app.use('/.',routes);
 
 app.listen(port, () => {
     console.log(`Server is running on PORT ${port}`);
