@@ -1,7 +1,7 @@
 //requiring packages
 const express = require('express');
 const mongoose = require('mongoose');
-require('dotenv')=constant();
+require('dotenv').config();
 
 // Define the port number
 const port = process.env.PORT || 3000;
