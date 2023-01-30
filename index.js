@@ -7,16 +7,21 @@ require('dotenv').config();
 const port = process.env.PORT || 3000;
 const databaseUrl =process.env.DATABASE_URL ||'';
 
-// Create an express app,Initialize express
-const app = express();
-
 //Connecting to the database
+mongoose.connect(databaseUrl);
 const database=mongoose.connection;//initialize a mongoose connection
 //create a listener to the db
 database.on('error',(error)=>{
     console.error(error);
 })
+database.once('connected',()=>{
+    console.log('Database connected');
+})
 
+// Create an express app,Initialize express
+const app = express();
+
+app.use(express.json());
 
 app.listen(port, () => {
     console.log(`Server is running on PORT ${port}`);
