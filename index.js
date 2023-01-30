@@ -1,6 +1,7 @@
 //requiring packages
 const express = require('express');
 const mongoose = require('mongoose');
+require('dotenv')=constant();
 
 // Create an express app,Initialize express
 const app = express();
